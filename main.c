@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 struct student {
-char name [2][50];
+char name [50];
 int id;
 int birthday[3];
 int score;};
@@ -11,11 +11,10 @@ struct Node {
     struct Node* next;
 };
 void add (struct Node* ptr){
- printf("\nThe name of the student:\n ");
-  printf("The first name : ");
-    scanf("%s",ptr->data.name[0]);
-    printf("\nThe last name : ");
-     scanf("%s",ptr->data.name[1]);
+ printf("\nThe name of the student: ");
+  fflush(stdin);
+  scanf("/n%*c");
+  fgets(ptr->data.name,sizeof(ptr->data.name),stdin);
    printf("\nThe id of the student: ");
    scanf("%d",&ptr->data.id);
    printf("\nThe date of birth of the student: \n");
@@ -33,9 +32,7 @@ void display (struct Node* ptr,int num){
 for (int i=1;i<=num;i++){
     printf("\n\nThe information of student #%d:\n",i);
     printf("The name: ");
-    printf("%s",ptr->data.name[0]);
-    printf(" ");
-    printf("%s",ptr->data.name[1]);
+    printf("%s",ptr->data.name);
    printf("\nThe id: ");
    printf("%d\n",ptr->data.id);
    printf("The date of birth: %d/%d/%d \n",ptr->data.birthday[0],ptr->data.birthday[1],ptr->data.birthday[2]);
@@ -121,8 +118,7 @@ switch (d){
      N=N+1;
      printf("-------------------------------------------------------------\n");
      printf("the list after modification\n");
-      display(head
-              ,N);
+      display(head,N);
      printf("-------------------------------------------------------------\n");
      break;
      case 2:tail=insert_end(tail);
